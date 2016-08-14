@@ -5,7 +5,7 @@ IM Extra Fields is a new plugin based on ItemManager 2.3.4 - ItemManager offers 
 
 For instance, it allows you to create a bunch of categories with different fields and properties. These can then be selected by end-user within "page options" menu, depending upon need. Here is an example of how to extend a simple index page by ItemManager's file field:
 
-(example)[https://bigin.github.io/ghpages/images/imextrafields/imextra-pages-edit01.png]
+![example](https://bigin.github.io/ghpages/images/imextrafields/imextra-pages-edit01.png)
 
 The IM Extra Fields plugin has a very simple structure and should act more as an interface between ItemManager's and GetSimple's functionality. IM-Extra-Fields has scant functions of its own, does not stand alone and uses just the functionality of the ItemManager framework. 
 
