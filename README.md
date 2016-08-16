@@ -86,7 +86,7 @@ Following `image`-field attributes are accessible:
 - positions (File position)
 
 > Note: 
-> The `image upload` field and `file upload` field are practically identical. File field allows you to configure which file extensions are available to upload. If you have a choice I then recommend you to use `file upload` rather than `image upload`.
+> The `image upload` field and `file upload` are practically identical. The file field allows you to configure which file extensions are allowed to upload. If you have a choice I then recommend you to use `file upload` rather than `image upload`.
 
 
 If you have any further questions relating to IM Extra Fields you will find help in the ItemManager 2 Thread:
