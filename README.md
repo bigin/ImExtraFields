@@ -64,7 +64,7 @@ foreach($item->fields->files->fullurl as $url) {
 }
 ```
 
-where the `files` is the field name of your added file field and the `fullurl` an field attribute:
+where the `files` is the field name of your added file field and the `fullurl` a field attribute:
 
 ![colored code](https://bigin.github.io/ghpages/images/imextrafields/code-color_file_field.png)
 
