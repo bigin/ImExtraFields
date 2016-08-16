@@ -28,7 +28,7 @@ $item = imanager()->getItem(7, 'slug='.$slug);
 // or alternative syntax:
 $item = imanager()->getItem('id=7', 'slug='.$slug);
 ```
-To output the item attributes just do:
+To output the item `attributes` just do:
 ```php
 echo $item->name;
 // or ID
@@ -46,6 +46,12 @@ The following attributes are available:
 - active
 - created
 - updated
+
+To output the item `field values` is a bit different but works according to the same principle:
+```php
+echo $item->fields->fieldname->value;
+```
+where the `fieldname` is the field name of your added category fields.
 
 
 If you have any further questions relating to IM Extra Fields you will find help in the ItemManager 2 Thread:
