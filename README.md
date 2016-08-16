@@ -1,4 +1,4 @@
-###IM Extra Fields
+#IM Extra Fields
 **GetSimple plugin based on ItemManager 2**
 
 IM Extra Fields is a GS plugin based on ItemManager 2.3.4 - ItemManager offers since version 2.3.4 new features, that simplify the usage the plugin in combination with GetSimple native pages. The IM-Extra-Fields plugin allows creation extra fields for native GS pages and is a kind of a mix between "I18N Custom Fields" and "Special Pages" plugins.
@@ -12,6 +12,10 @@ The IM Extra Fields plugin has a very simple structure and should act more as an
 **A little restriction in the Beta version:**
 
 IM Extra Fields plugin does not support duplicates of the title, also not for items of the different categories. For example, when you create a new item within a "Test" category, let's say with a title "index". If you now edit your index page and assign it to a different category "ExtraPages" for example, than the "index" item of the "Test" category that you have created before will be deleted.
+
+***Usage
+To get an item assigned to the current page just simple call:
+<script src="https://gist.github.com/bigin/d75bedcd36efec4fb5c0030588e239bf.js"></script>
 
 If you have any further questions relating to IM Extra Fields you will find help in the ItemManager 2 Thread:
 
