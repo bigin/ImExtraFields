@@ -96,7 +96,7 @@ If you have any further questions relating to IM Extra Fields you will find help
 
 http://get-simple.info/forums/showthread.php?tid=7293
 
-##Install Instructions:
+##Installation Instructions:
 
 **Requirements:**
 
