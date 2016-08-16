@@ -3,7 +3,7 @@
 
 IM Extra Fields is a GS plugin based on [ItemManager 2.3.4](https://github.com/bigin/ItemManager_2.0) - ItemManager offers since version 2.3.4 new features, that simplify the usage of the plugin in combination with GetSimple native pages. IM Extra Fields plugin allows creation extra fields for native GS pages and is a kind of a mix between "I18N Custom Fields" and "Special Pages" plugins.
 
-For instance, it allows you to create a bunch of categories with different fields and properties. These can then be selected by end-user within "page options" menu, depending upon need. Here is an example of how to extend a simple index page by ItemManager's file field:
+For instance, it allows you to create a bunch of categories with different fields and properties. These can then be selected by end-user within edit page `options` menu, depending upon need. There is an example of how to extend a simple index page by ItemManager's file field:
 
 ![example](https://bigin.github.io/ghpages/images/imextrafields/imextra-pages-edit01.png)
 
@@ -22,7 +22,7 @@ $item = imanager()->getItem('name=Your category name', 'name='.$slug);
 ```
 where the first parameter is the category name and the second the current page slug.
 
-Of course, this can also be done by using any other attributes or fields, there is an example how you can do that by category ID:
+Of course, this can also be done by using any other attributes or fields, there is an example how you can access an image via the category ID:
 ```php
 $slug = get_page_slug(false);
 $item = imanager()->getItem(7, 'name='.$slug);
@@ -42,7 +42,6 @@ The following attributes are accessible:
 - id
 - position
 - name
-- active
 - label
 - active
 - created
