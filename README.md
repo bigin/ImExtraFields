@@ -13,7 +13,8 @@ The IM Extra Fields plugin has a very simple structure and should act more as an
 
 IM Extra Fields plugin does not support duplicates of the title, also not for items of the different categories. For example, when you create a new item within a "Test" category, let's say with a title "index". If you now edit your index page and assign it to a different category "ExtraPages" for example, than the "index" item of the "Test" category that you have created before will be deleted.
 
-**Usage**
+##Usage** 
+
 To get an item assigned to the current page just simple call: 
 ```php
 $slug = get_page_slug(false);
@@ -93,9 +94,10 @@ If you have any further questions relating to IM Extra Fields you will find help
 
 http://get-simple.info/forums/showthread.php?tid=7293
 
-**Install Instructions:**
+##Install Instructions:
 
-Requirements
+**Requirements:**
+
 `ItemManager 2.3.4` is required to get IM Extra Fields working
 
 
