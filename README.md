@@ -17,18 +17,18 @@ IM Extra Fields plugin does not support duplicates of the title, also not for it
 To get an item assigned to the current page just simple call: 
 ```php
 $slug = get_page_slug(false);
-$item = imanager()->getItem('name=Your category name', 'slug='.$slug);
+$item = imanager()->getItem('name=Your category name', 'name='.$slug);
 ```
-where the first parameter is the category bane and the second an the curren page ID.
+where the first parameter is the category name and the second an the curren page ID.
 
 Of course, this can also be done by using any other attributes or fields, there is an example how you can do that by category ID:
 ```php
 $slug = get_page_slug(false);
-$item = imanager()->getItem(7, 'slug='.$slug);
+$item = imanager()->getItem(7, 'name='.$slug);
 // or alternative syntax:
-$item = imanager()->getItem('id=7', 'slug='.$slug);
+$item = imanager()->getItem('id=7', 'name='.$slug);
 ```
-To output the item `attributes` just do:
+To output an item `attribute` just do:
 ```php
 echo $item->name;
 // or ID
@@ -47,11 +47,17 @@ The following attributes are available:
 - created
 - updated
 
-To output the item `field values` is a bit different but works according to the same principle:
+Outputing a `field value` of an item is a bit different, but works according to the same principle:
 ```php
 echo $item->fields->fieldname->value;
 ```
 where the `fieldname` is the field name of your added category fields.
+
+Note the following different syntax when you are working with special fields like `Image-` or `File Upload`. To access the images or file field from your templates do:
+
+```php
+
+```
 
 
 If you have any further questions relating to IM Extra Fields you will find help in the ItemManager 2 Thread:
