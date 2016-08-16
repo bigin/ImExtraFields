@@ -15,12 +15,12 @@ IM Extra Fields plugin does not support duplicates of the title, also not for it
 
 ##Usage
 
-To get an item assigned to the current page just simple call: 
+To get an item assigned to the current page, just simple call: 
 ```php
 $slug = get_page_slug(false);
 $item = imanager()->getItem('name=Your category name', 'name='.$slug);
 ```
-where the first parameter is the category name and the second an the curren page ID.
+where the first parameter is the category name and the second the curren page ID.
 
 Of course, this can also be done by using any other attributes or fields, there is an example how you can do that by category ID:
 ```php
@@ -54,7 +54,8 @@ echo $item->fields->fieldname->value;
 ```
 where the `fieldname` is the field name of your added category fields.
 
-Note the following different syntax when you are working with special fields like `Image-` or `File Upload`. 
+> Note the following different syntax when you are working with special fields like `Image-` or `File Upload`.
+
 To access the images or file field from your templates you can loop through the files field and output each file:
 
 ```php
@@ -88,12 +89,12 @@ Following `file`-field attributes are accessible:
 Following `image`-field attributes are accessible:
 
 - imagename (An array of the image names: `my_image.jpg`)
-- imagepath (An array of file paths without file names: `var/www/http/my_domain/data/uploads/imanager/2.20/`)
-- imagefullpath (An array of the file paths: `var/www/http/my_domain/data/uploads/imanager/2.20/my_image.jpg`)
-- imageurl (An array of file URLs without file names: `data/uploads/imanager/2.20/`)
-- imagefullurl (An array of file URLs: `data/uploads/imanager/2.20/my_image.jpg`)
-- imagetitle (The file title)
-- positions (File position)
+- imagepath (An array of image paths without file names: `var/www/http/my_domain/data/uploads/imanager/2.20/`)
+- imagefullpath (An array of the image paths: `var/www/http/my_domain/data/uploads/imanager/2.20/my_image.jpg`)
+- imageurl (An array of image URLs without file names: `data/uploads/imanager/2.20/`)
+- imagefullurl (An array of image URLs: `data/uploads/imanager/2.20/my_image.jpg`)
+- imagetitle (The image title)
+- positions (Image position)
 
 > Note: 
 > The `image upload` field and `file upload` are practically identical. The file field allows you to configure which file extensions are allowed to upload. If you have a choice I then recommend you to use `file upload` rather than `image upload`.
