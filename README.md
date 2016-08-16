@@ -20,7 +20,7 @@ To get an item assigned to the current page, just simple call:
 $slug = get_page_slug(false);
 $item = imanager()->getItem('name=Your category name', 'name='.$slug);
 ```
-where the first parameter is the category name and the second the curren page slug.
+where the first parameter is the category name and the second the current page slug.
 
 Of course, this can also be done by using any other attributes or fields, there is an example how you can do that by category ID:
 ```php
