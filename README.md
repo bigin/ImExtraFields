@@ -59,18 +59,10 @@ where the `fieldname` is the field name of your added category fields.
 To access the images or file field from your templates you can loop through the files field and output each file:
 
 ```php
-foreach($item->fields->files->file_name as $key => $name) {
-	echo '<img src="'.$item->fields->files->fullurl[$key].'">';
+foreach($item->fields->files->fullurl as $url) {
+	echo '<img src="'.$url.'">';
 }
 ```
-Or if you preffer, a shorter style just do:
-```php
-$files = $item->fields->files;
-foreach($files->file_name as $key => $name) {
-	echo '<img src="'.$files->fullurl[$key].'">';
-}
-```
-
 
 where the `files` is the field name of your added file field and the `fullurl` an field attribute:
 
