@@ -13,9 +13,40 @@ The IM Extra Fields plugin has a very simple structure and should act more as an
 
 IM Extra Fields plugin does not support duplicates of the title, also not for items of the different categories. For example, when you create a new item within a "Test" category, let's say with a title "index". If you now edit your index page and assign it to a different category "ExtraPages" for example, than the "index" item of the "Test" category that you have created before will be deleted.
 
-***Usage
-To get an item assigned to the current page just simple call:
-<script src="https://gist.github.com/bigin/d75bedcd36efec4fb5c0030588e239bf.js"></script>
+**Usage**
+To get an item assigned to the current page just simple call: 
+```php
+$slug = get_page_slug(false);
+$item = imanager()->getItem('name=Your category name', 'slug='.$slug);
+```
+where the first parameter is the category bane and the second an the curren page ID.
+
+Of course, this can also be done by using any other attributes or fields, there is an example how you can do that by category ID:
+```php
+$slug = get_page_slug(false);
+$item = imanager()->getItem(7, 'slug='.$slug);
+// or alternative syntax:
+$item = imanager()->getItem('id=7', 'slug='.$slug);
+```
+To output the item attributes just do:
+```php
+echo $item->name;
+// or ID
+echo $item->id;
+// or label
+echo $item->label;
+// ...
+```
+The following attributes are available:
+- id
+- position
+- name
+- active
+- label
+- active
+- created
+- updated
+
 
 If you have any further questions relating to IM Extra Fields you will find help in the ItemManager 2 Thread:
 
