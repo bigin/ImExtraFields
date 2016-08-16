@@ -61,6 +61,32 @@ foreach($items->fields->files->file_name as $key => $name) {
 	echo '<img src="'.$items->fields->files->fullurl[$key].'">';
 }
 ```
+where the `files` is the field name of your added file field and the `fullurl` an field attribute:
+
+![colored code](https://bigin.github.io/ghpages/images/imextrafields/code-color_file_field.png)
+
+Following `file`-field attributes are accessible:
+
+- file_name (An array of the file names: `my_file.pdf`)
+- path (An array of file paths without file names: `var/www/http/my_domain/data/uploads/imanager/2.20/`)
+- fullpath (An array of the file paths: `var/www/http/my_domain/data/uploads/imanager/2.20/my_file.pdf`)
+- url (An array of file URLs without file names: `data/uploads/imanager/2.20/`)
+- fullurl (An array of file URLs: `data/uploads/imanager/2.20/my_file.pdf`)
+- title (The file title)
+- positions (File position)
+
+Following `image`-field attributes are accessible:
+
+- imagename (An array of the image names: `my_image.jpg`)
+- imagepath (An array of file paths without file names: `var/www/http/my_domain/data/uploads/imanager/2.20/`)
+- imagefullpath (An array of the file paths: `var/www/http/my_domain/data/uploads/imanager/2.20/my_image.jpg`)
+- imageurl (An array of file URLs without file names: `data/uploads/imanager/2.20/`)
+- imagefullurl (An array of file URLs: `data/uploads/imanager/2.20/my_image.jpg`)
+- imagetitle (The file title)
+- positions (File position)
+
+> Note: 
+> The `image upload` field and `file upload` field are practically identical. File field allows you to configure which file extensions are available to upload. If you have a choice I then recommend you to use `file upload` rather than `image upload`.
 
 
 If you have any further questions relating to IM Extra Fields you will find help in the ItemManager 2 Thread:
