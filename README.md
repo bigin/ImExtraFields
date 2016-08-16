@@ -37,7 +37,7 @@ echo $item->id;
 echo $item->label;
 // ...
 ```
-The following attributes are available:
+The following attributes are accessible:
 - id
 - position
 - name
@@ -53,10 +53,13 @@ echo $item->fields->fieldname->value;
 ```
 where the `fieldname` is the field name of your added category fields.
 
-Note the following different syntax when you are working with special fields like `Image-` or `File Upload`. To access the images or file field from your templates do:
+Note the following different syntax when you are working with special fields like `Image-` or `File Upload`. 
+To access the images or file field from your templates you can loop through the files field and output each file:
 
 ```php
-
+foreach($items->fields->files->file_name as $key => $name) {
+	echo '<img src="'.$items->fields->files->fullurl[$key].'">';
+}
 ```
 
 
