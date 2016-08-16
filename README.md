@@ -1,7 +1,7 @@
 #IM Extra Fields
 **GetSimple plugin based on ItemManager 2**
 
-IM Extra Fields is a GS plugin based on [https://github.com/bigin/ItemManager_2.0](ItemManager 2.3.4) - ItemManager offers since version 2.3.4 new features, that simplify the usage of the plugin in combination with GetSimple native pages. IM Extra Fields plugin allows creation extra fields for native GS pages and is a kind of a mix between "I18N Custom Fields" and "Special Pages" plugins.
+IM Extra Fields is a GS plugin based on [ItemManager 2.3.4](https://github.com/bigin/ItemManager_2.0) - ItemManager offers since version 2.3.4 new features, that simplify the usage of the plugin in combination with GetSimple native pages. IM Extra Fields plugin allows creation extra fields for native GS pages and is a kind of a mix between "I18N Custom Fields" and "Special Pages" plugins.
 
 For instance, it allows you to create a bunch of categories with different fields and properties. These can then be selected by end-user within "page options" menu, depending upon need. Here is an example of how to extend a simple index page by ItemManager's file field:
 
