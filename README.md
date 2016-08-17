@@ -29,6 +29,7 @@ $item = imanager()->getItem(7, 'name='.$slug);
 // or alternative syntax:
 $item = imanager()->getItem('id=7', 'name='.$slug);
 ```
+After you obtain an instance of item, you can access its parameter as below.
 To output an item `attribute` just do:
 ```php
 echo $item->name;
