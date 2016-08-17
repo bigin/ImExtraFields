@@ -15,7 +15,7 @@ IM Extra Fields plugin does not support duplicates of the title, also not for it
 
 ##Usage
 
-All Items created by IM Extra Fields are linked to GS pages with their `names` to pages `slugs`.  
+All items created through the IM Extra Fields inteface are linked to GS pages with their `names` to the pages `slugs`.  
 In order to get the current GS page slug, call the GS function `get_page_slug(false)`:
 ```php
 $slug = get_page_slug(false);
