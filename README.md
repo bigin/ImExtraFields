@@ -11,7 +11,7 @@ The IM Extra Fields plugin was specially kept simple and should act more as an i
 
 **A little restriction in the Beta version:**
 
-IM Extra Fields plugin does not support duplicates of the title, also not for items of the different categories. For example, when you create a new item within `Test` category, let's say with a title `index`. If you now edit your index page and assign it to a different category, than the `index` item, that you have created before, will be deleted.
+IM Extra Fields plugin does not support duplicates of the title, also not for items of the different categories. For example, when you create a new item within `Test` category, let's say with a title `index`. If you now edit your index page and assign it to a different category, so the `index` item, that you have created before, will be deleted.
 
 ##Usage
 
