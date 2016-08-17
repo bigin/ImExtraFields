@@ -40,14 +40,17 @@ echo $item->label;
 // ...
 ```
 The following attributes are accessible:
-- id        - Item ID
-- position  - Item position (default the item ID)
-- name      - Item name (default the page slug)
-- label     - Label, any string (default empty)
-- active    - 1 active 0 inactive 
-- created   - Date when item was created
-- updated   - Last item updated date
-- fields    - An array of the fieds assigned to the item 
+
+Attribute | Description        | Default value
+:---------|:-------------------|:-------------
+id        | Item ID            |
+position  | Item position      | Item ID
+name      | Item name          | Page slug
+label     | Any string         | Empty
+active    | 1-active 0-inactive| 1
+created   | Timestamp          | Date when item was created
+updated   | Timestamp          | Last item updated date
+fields    | An array of the fieds | Fields assigned to the item 
 
 Outputing a `field value` of an item is a bit different, but works according to the same principle:
 ```php
