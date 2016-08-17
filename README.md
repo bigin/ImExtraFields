@@ -15,16 +15,21 @@ IM Extra Fields plugin does not support duplicates of the title, also not for it
 
 ##Usage
 
-To get an item assigned to the current page, just simple call: 
+All Items created by IM Extra Fields are linked to GS pages with their `names` to pages `slugs`.  
+In order to get the current GS page slug, call the GS function `get_page_slug(false)`:
 ```php
 $slug = get_page_slug(false);
+```
+After the page slug is known, just pas it to `getItem()` function as the second parameter (The first one is the category `id` or `name` or `slug`, ... ) 
+
+Thus, to get an item assigned to the current page, just simple call: 
+```php
 $item = imanager()->getItem('name=Your category name', 'name='.$slug);
 ```
 where the first parameter is the category name and the second the current page slug.
 
-Of course, this can also be done by using any other attributes or fields, there is an example how you can access an image via the category ID:
+Of course, this can also be done by using any other attributes or fields, there is an example how you can access an item via the category ID:
 ```php
-$slug = get_page_slug(false);
 $item = imanager()->getItem(7, 'name='.$slug);
 // or alternative syntax:
 $item = imanager()->getItem('id=7', 'name='.$slug);
