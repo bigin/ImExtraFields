@@ -29,7 +29,7 @@ $item = imanager()->getItem(7, 'name='.$slug);
 // or alternative syntax:
 $item = imanager()->getItem('id=7', 'name='.$slug);
 ```
-After you obtain an instance of item, you can access its parameter as below.
+After you obtain an instance of item, you can access its parameter as shown below.   
 To output an item `attribute` just do:
 ```php
 echo $item->name;
@@ -54,7 +54,7 @@ echo $item->fields->fieldname->value;
 ```
 where the `fieldname` is the field name of your added category fields.
 
-> Note the following different syntax when you are working with special fields like `Image-` or `File Upload`.
+> Note the following different syntax when you are working with special fields like `image-` or `file`-upload.
 
 To access the images or file field from your templates you can loop through the files field and output each file:
 
