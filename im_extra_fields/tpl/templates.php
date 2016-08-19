@@ -42,15 +42,19 @@ $(function() {
 				//console.log(data);
 				if(data.status == 1) {
 					// destroy ckeditor instancess
-					for(name in CKEDITOR.instances) {
-						if(name !== 'post-content') CKEDITOR.instances[name].destroy(true);
+					if(typeof(CKEDITOR) !== 'undefined') {
+						for(name in CKEDITOR.instances) {
+							if(name !== 'post-content') CKEDITOR.instances[name].destroy(true);
+						}
 					}
 					$('#itemContent').show();
 					$('#itemContent').html(data.output);
 				} else {
 					// destroy ckeditor instancess
-					for(name in CKEDITOR.instances) {
-						if(name !== 'post-content') CKEDITOR.instances[name].destroy(true);
+					if(typeof(CKEDITOR) !== 'undefined') {
+						for(name in CKEDITOR.instances) {
+							if(name !== 'post-content') CKEDITOR.instances[name].destroy(true);
+						}
 					}
 					$('#itemContent').show();
 					$('#itemContent').html(data.output);

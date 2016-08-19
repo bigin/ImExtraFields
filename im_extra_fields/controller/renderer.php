@@ -15,7 +15,7 @@ class Renderer
 	 */
 	public function init(Processor $processor)
 	{
-		include(dirname(__DIR__).'/tmp/templates.php');
+		include(dirname(__DIR__).'/tpl/templates.php');
 		$this->imanager = imanager();
 		$this->processor = $processor;
 		$this->processor->init();

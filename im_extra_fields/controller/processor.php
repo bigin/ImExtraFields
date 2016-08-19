@@ -7,11 +7,13 @@ class Processor
 	public $curitem;
 	public $imapp;
 
+
 	public function __construct()
 	{
 		$this->imanager = imanager();
 		$this->imapp = $this->imanager->getItemMapper();
 	}
+
 
 	/**
 	 * Just try to init the IM-Extra-Fields item for specific GS page
@@ -52,6 +54,7 @@ class Processor
 			if(empty($this->curitem->id)) $this->curitem = new Item($categoryid);
 		}
 	}
+
 
 	/**
 	 * This method will called after page data saved, so we don't
@@ -253,6 +256,7 @@ class Processor
 		if(!empty($this->curcat->id) && !empty($this->curitem->id))
 			return $this->imanager->deleteItem($this->curitem->id, $this->curcat->id);
 	}
+
 
 	/**
 	 * Function to compute the unsigned crc32 value.
