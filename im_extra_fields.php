@@ -3,7 +3,7 @@
 register_plugin(
 	basename(__FILE__, '.php'),
 	'IM Extra Page Fields',
-	'0.9',
+	'1.0',
 	'Juri Ehret',
 	'http://ehret-studio.com',
 	'Extends native GS page editor with ItemManager fields',
