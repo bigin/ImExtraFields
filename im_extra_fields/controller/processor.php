@@ -90,6 +90,8 @@ class Processor
 
 		$curitem = !empty($this->imapp->items[(int)@$_POST['itemid']]) ?
 			$this->imapp->items[(int)$_POST['itemid']] : new Item($categoryid);
+		// Clean up cached images
+		$this->imanager->cleanUpCachedFiles($curitem);
 
 		// Check if slug field available
 		foreach($curitem->fields as $fieldname => $fieldvalue)
