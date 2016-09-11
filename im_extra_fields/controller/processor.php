@@ -24,14 +24,19 @@ class Processor
 		if(empty($url)) $url = $id;
 		// This is the selected category-ID
 		$categoryid = !empty($_POST['epcatid']) ? (int)$_POST['epcatid'] : (!empty($_GET['epcatid']) ? (int)$_GET['epcatid'] : null);
-
 		// No selected category was found, try to localize the category by item name, same like the current page slug
 		if(is_null($categoryid))
 		{
+			$itemid = $this->computeUnsignedCRC32($url);
 			foreach($this->imanager->getCategoryMapper()->categories as $category)
 			{
-				$this->imapp->init($category->id);
-				$this->curitem = $this->imapp->getItem('name='.$url);
+				if(HIGH_DATA_CAPACITY) {
+					$this->imapp->limitedInit($category->id, $itemid);
+					$this->curitem = $this->imapp->getItem('name='.$itemid);
+				} else {
+					$this->imapp->init($category->id);
+					$this->curitem = $this->imapp->getItem('name='.$url);
+				}
 
 				if(!empty($this->curitem))
 				{
@@ -49,8 +54,15 @@ class Processor
 		} else
 		{
 			$this->curcat = $this->imanager->getCategory($categoryid);
-			$this->imapp->init($this->curcat->id);
-			$this->curitem = $this->imapp->getItem('name='.$url);
+
+			if(HIGH_DATA_CAPACITY) {
+				$this->imapp->limitedInit($this->curcat->id, $this->computeUnsignedCRC32($url));
+				$this->curitem = $this->imapp->getItem('name='.$this->computeUnsignedCRC32($url));
+			} else {
+				$this->imapp->init($this->curcat->id);
+				$this->curitem = $this->imapp->getItem('name='.$url);
+			}
+
 			if(empty($this->curitem->id)) $this->curitem = new Item($categoryid);
 		}
 	}
@@ -198,18 +210,30 @@ class Processor
 				$curitem->fields->$fieldname->$inputputkey = $inputvalue;
 		}
 
-		//$current_id = computeUnsignedCRC32($url);
-		$curitem->name = $url;
+		if(HIGH_DATA_CAPACITY) {
+			$id = $this->computeUnsignedCRC32($url);
+			$curitem->name = $id;
+			$curitem->id = $id;
+		} else {
+			$curitem->name = $url;
+		}
 		$curitem->active = 1;
 
 		// Delete all items with the same name. There i see no other option to prevent orphaned files
 		$this->searchAndDelete($mapper->categories, $url, $curitem->id);
 
-		if(!$curitem->save())
-		{
-			redirect("edit.php?id=$url&upd=edit-error&type=".urlencode(MsgReporter::getClause('err_save_item')));
-			return false;
+		if(HIGH_DATA_CAPACITY) {
+			if(!$curitem->forcedSave()) {
+				redirect("edit.php?id=$url&upd=edit-error&type=".urlencode(MsgReporter::getClause('err_save_item')));
+				return false;
+			}
+		} else {
+			if(!$curitem->save()) {
+				redirect("edit.php?id=$url&upd=edit-error&type=".urlencode(MsgReporter::getClause('err_save_item')));
+				return false;
+			}
 		}
+
 
 		$this->imanager->getSectionCache()->expire();
 
@@ -235,10 +259,16 @@ class Processor
 	protected function searchAndDelete($categories, $name, $excludeid = null)
 	{
 		// Delete all items with the same name. There i see no other option to prevent orphaned files
+		$crc32name = $this->computeUnsignedCRC32($name);
 		foreach($categories as $category)
 		{
-			$this->imapp->init($category->id);
-			$orphaneditem = $this->imapp->getItem('name='.$name);
+			if(HIGH_DATA_CAPACITY) {
+				$this->imapp->limitedInit($category->id, $crc32name);
+				$orphaneditem = $this->imapp->getItem('name='.$crc32name);
+			} else {
+				$this->imapp->init($category->id);
+				$orphaneditem = $this->imapp->getItem('name='.$name);
+			}
 			if(!empty($orphaneditem) && $orphaneditem->id != $excludeid)
 			{
 				if(!empty($orphaneditem->categoryid))

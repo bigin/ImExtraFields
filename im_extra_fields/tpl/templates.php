@@ -68,6 +68,15 @@ EOD;
 
 
 /**
+ * Item-ID row
+ */
+$this->itemInfo =
+<<<EOD
+	<div class="itemInfo"><p>Category: [[catid]] | Item: [[id]]</p></div>
+EOD;
+
+
+/**
  * Options template
  */
 $this->selectOption =
@@ -82,6 +91,7 @@ EOD;
 $this->inputsArounder =
 <<<EOD
 		<div class="fieldsArounder">
+			[[itemidrow]]
 			[[fields]]
 			[[imlink]]
 			<input type="hidden" name="timestamp" value="[[timestamp]]">
