@@ -10,14 +10,14 @@ For instance, it allows you to create a bunch of categories with different field
 
 ## Usage   
 
-It is recommended to add one or more (according to your needs) functions to your `functions.php` file in your `theme/` directory. You can then call these in your template to retrieve items you need. For example, to get an item associated with the current page, you can use this function:
+It is recommended to add one or more (according to your needs) functions to your `functions.php` file in your `theme/` directory. You can then call these in your template to retrieve items you need. For example, to get an item assigned to the current page, you can use this function:
 
 ```
 /**
  * This function returns SimpleItem object assigned to the current page.
  * Function expects category id as parameter.
  *
- * @param $category_id - Category id to which item belongs
+ * @param int $category_id - Category id to which item belongs
  *
  * @return SimpleItem object | null
  */
@@ -26,8 +26,7 @@ function get_page_item($category_id) {
     $mapper = $imanager->getItemMapper();
     $mapper->alloc($category_id);
     $pageId = Util::computeUnsignedCRC32(return_page_slug());
-    $item = $mapper->getSimpleItem($pageId);
-    return $item;
+    return $mapper->getSimpleItem($pageId);
 }
 ```
 
@@ -41,7 +40,7 @@ if($item) {
 }
 ```
 
-where the functions parameter `1` is the category id to which the item belongs.
+where the argument `1` is the category id to which the item belongs.
 
 If you have any further questions relating to IM Extra Fields you will find help in the ItemManager 2 Thread:
 
