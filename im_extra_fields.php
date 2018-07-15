@@ -5,23 +5,24 @@ register_plugin(
 	'IM Extra Page Fields',
 	'1.0.2',
 	'Juri Ehret',
-	'http://ehret-studio.com',
+	'https://ehret-studio.com',
 	'Extends native GS page editor with ItemManager fields',
 	'',
 	''
 );
 
 /**
- * This is an experimental feature
- * Change this constant to "true" if you work with a great amount of
- * items, 300 and more.
- * If the HIGH_DATA_CAPACITY is set to true, the IM Extra Fields will
+ * This is an experimental feature, change it back to "false" if
+ * there are accessing problems.
+ *
+ * If the NUMUNIFY is set to true, the IM Extra Fields will
  * work with CRC32 int key rather than with the page slug. That should
  * accelerate the item access immensely. I have a test system running
- * on GS, the top 2 categories having 2302, 620 items each and it's
+ * on GS, the top 2 categories having 2302 and 620 items each and it's
  * running like a champ.
  */
-define('HIGH_DATA_CAPACITY', true);
+define('NUMUNIFY', true);
+
 
 /**
  * Hooked stuff designated by '__' (sample: __function_name())

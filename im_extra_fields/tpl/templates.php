@@ -98,6 +98,15 @@ $this->inputsArounder =
 			<input type="hidden" name="itemid" value="[[itemid]]">
 			<input type="hidden" name="categoryid" value="[[categoryid]]">
 		</div>
+		<script>
+			$(function() {
+				for(var i in CKEDITOR.instances) {
+					CKEDITOR.instances[i].on('change', function() {
+						if(this.name != 'post-content') { this.updateElement(); }
+					});
+				}
+			});
+		</script>
 EOD;
 
 

@@ -30,7 +30,7 @@ class Processor
 			$itemid = $this->computeUnsignedCRC32($url);
 			foreach($this->imanager->getCategoryMapper()->categories as $category)
 			{
-				if(HIGH_DATA_CAPACITY) {
+				if(NUMUNIFY) {
 					$this->imapp->limitedInit($category->id, $itemid);
 					$this->curitem = $this->imapp->getItem('name='.$itemid);
 				} else {
@@ -55,7 +55,7 @@ class Processor
 		{
 			$this->curcat = $this->imanager->getCategory($categoryid);
 
-			if(HIGH_DATA_CAPACITY) {
+			if(NUMUNIFY) {
 				$this->imapp->limitedInit($this->curcat->id, $this->computeUnsignedCRC32($url));
 				$this->curitem = $this->imapp->getItem('name='.$this->computeUnsignedCRC32($url));
 			} else {
@@ -210,7 +210,7 @@ class Processor
 				$curitem->fields->$fieldname->$inputputkey = $inputvalue;
 		}
 
-		if(HIGH_DATA_CAPACITY) {
+		if(NUMUNIFY) {
 			$id = $this->computeUnsignedCRC32($url);
 			$curitem->name = $id;
 			$curitem->id = $id;
@@ -222,7 +222,7 @@ class Processor
 		// Delete all items with the same name. There i see no other option to prevent orphaned files
 		$this->searchAndDelete($mapper->categories, $url, $curitem->id);
 
-		if(HIGH_DATA_CAPACITY) {
+		if(NUMUNIFY) {
 			if(!$curitem->forcedSave()) {
 				redirect("edit.php?id=$url&upd=edit-error&type=".urlencode(MsgReporter::getClause('err_save_item')));
 				return false;
@@ -233,7 +233,8 @@ class Processor
 				return false;
 			}
 		}
-
+		// Save SimpleItem
+		$this->saveSimpleItem($curitem);
 
 		$this->imanager->getSectionCache()->expire();
 
@@ -250,9 +251,30 @@ class Processor
 		return true;
 	}
 
+	/**
+	 * The method saves SimpleItem object if useAllocater is activated
+	 *
+	 * @return bool
+	 */
+	protected function saveSimpleItem($curitem)
+	{
+		if($this->imanager->config->useAllocater !== true) {
+			return false;
+		}
+		if($this->imapp->alloc($curitem->categoryid) !== true) {
+			$this->imapp->init($curitem->categoryid);
+			if(!empty($this->imapp->items)) {
+				$this->imapp->simplifyBunch($this->imapp->items);
+				$this->imapp->save();
+			}
+		}
+		$this->imapp->simplify($curitem);
+		return ($this->imapp->save() !== false) ? true : false;
+	}
+
 
 	/**
-	 * Scan all categories for a specific item name and physically delete it
+	 * Scan all categories for a specific item name and delete it physically
 	 *
 	 * @return bool
 	 */
@@ -262,7 +284,7 @@ class Processor
 		$crc32name = $this->computeUnsignedCRC32($name);
 		foreach($categories as $category)
 		{
-			if(HIGH_DATA_CAPACITY) {
+			if(NUMUNIFY) {
 				$this->imapp->limitedInit($category->id, $crc32name);
 				$orphaneditem = $this->imapp->getItem('name='.$crc32name);
 			} else {
@@ -294,6 +316,8 @@ class Processor
 	 * Function to compute the unsigned crc32 value.
 	 * PHP crc32 function returns int which is signed, so in order to get the correct crc32 value
 	 * we need to convert it to unsigned value.
+	 *
+	 * NOTE: it produces different results on 64-bit compared to 32-bit PHP system
 	 *
 	 * @param $str - String to compute the unsigned crc32 value.
 	 * @return $var - Unsinged inter value.
